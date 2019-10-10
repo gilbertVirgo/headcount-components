@@ -1,0 +1,21 @@
+<svg id="Group_4" data-name="Group 4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="69" height="69" viewBox="0 0 69 69">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Mask" cx="34.5" cy="34.5" r="34.5" fill="#d8d8d8"/>
+    </clipPath>
+  </defs>
+  <g id="Group_2_Copy" data-name="Group 2 Copy">
+    <g id="Path_6_Copy_3" data-name="Path 6 Copy 3">
+      <circle id="Mask-2" data-name="Mask" cx="34.5" cy="34.5" r="34.5" fill="#d8d8d8"/>
+      <g id="Path_6_Copy_3-2" data-name="Path 6 Copy 3" clip-path="url(#clip-path)">
+        <g id="noun_add_photo_2073371" data-name="noun_add photo_2073371" transform="translate(14.95 17.25)">
+          <g id="Group">
+            <path id="Path" d="M4.719,0A4.7,4.7,0,1,0,9.437,4.7,4.7,4.7,0,0,0,4.719,0Z" transform="translate(13.175 12.195)" fill="#303030"/>
+            <path id="Shape" d="M35.32,39.054a9.058,9.058,0,0,1-9.064-9.031H4.345A4.328,4.328,0,0,1,0,25.694V8.984A4.288,4.288,0,0,1,1.279,5.929,4.321,4.321,0,0,1,4.345,4.655H9.811l1.682-3.4A2.223,2.223,0,0,1,13.5,0h8.363a2.3,2.3,0,0,1,2.009,1.256l1.635,3.352h5.466A4.359,4.359,0,0,1,35.32,8.937v12.01a9.054,9.054,0,1,1,0,18.107Zm0-15.687A6.647,6.647,0,1,0,40,25.31,6.6,6.6,0,0,0,35.32,23.367ZM17.66,8.937A7.971,7.971,0,1,0,23.3,11.259,7.946,7.946,0,0,0,17.66,8.937Z" transform="translate(0.234)" fill="#303030"/>
+            <path id="Path-2" data-name="Path" d="M7.475,3.119H5.56V1.21a1.215,1.215,0,0,0-2.429,0V3.119H1.215A1.235,1.235,0,0,0,0,4.329a1.235,1.235,0,0,0,1.215,1.21H3.13V7.448a1.215,1.215,0,0,0,2.429,0V5.539H7.475A1.235,1.235,0,0,0,8.69,4.329,1.2,1.2,0,0,0,7.475,3.119Z" transform="translate(31.208 25.648)" fill="#303030"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
