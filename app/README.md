@@ -9,7 +9,7 @@ Base components are alternatives to HTML elements. It is necessary to use these 
 * View
     - Used in place of `div`, `section` and all other block-level tags.
 * Button
-    - Used in cases where an `onClick` event needs to be captured.
+    - Used when a `click` event needs to be captured.
 * Image
     - Used in place of the `img` HTML element.
 * Input
