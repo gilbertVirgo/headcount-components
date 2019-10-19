@@ -1,16 +1,16 @@
 import React from "react";
 
+import View from "./View";
+
 import Close from "../assets/close.svg";
 
 import main from '../styles/main';
 import color from "../styles/color";
 
-import Button from "./Button.d";
-import Image from "./Image.d";
+import Button from "./Button";
+import Image from "./Image";
 
-declare module "react";
-
-const inline = {
+const styles = {
     overlay: (show: boolean) => ({
         ...main.paddingLarge,
         display: show ? "block" : "none",
@@ -46,19 +46,19 @@ interface ModalProps {
         color: string
     },
     onClose: any,
-    children: any
+    children: JSX.Element | JSX.Element[] | string
 }
 
 const Modal = ({ show, variant: { backgroundColor, color }, onClose, children }: ModalProps) => {
     return (
-        <div style={inline.overlay(show)} onClick={onClose}>
-            <div style={inline.container(backgroundColor)}>
-                <Button style={inline.closeButton} onClick={onClose}>
-                    <Image source={Close} style={inline.close} />
+        <View style={styles.overlay(show)} onClick={onClose}>
+            <View style={styles.container(backgroundColor)}>
+                <Button style={styles.closeButton} onClick={onClose}>
+                    <Image src={Close} style={styles.close} />
                 </Button>
                 {children}
-            </div>
-        </div>
+            </View>
+        </View>
     )
 }
 

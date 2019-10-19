@@ -1,10 +1,10 @@
 import React from "react";
 
+import View from "./View";
+
 import main from "../styles/main";
 
-declare module "react";
-
-const inline = {
+const styles = {
     ...main.paddingLarge,
     position: "relative" as const,
     maxWidth: "480px",
@@ -14,7 +14,7 @@ const inline = {
 }
 
 const Container = ({ style, children }: { style: object, children: object }) => (
-    <div style={{ ...inline, ...style }}>{children}</div>
+    <View style={{ ...styles, ...style }}>{children}</View>
 );
 
 export default Container;

@@ -2,12 +2,12 @@ const text = {
     caps: {
         textTransform: "uppercase" as const
     },
-    center: {
-        textAlign: "center" as const
-    },
     default: {
-        fontFamily: "Source Sans Pro",
-        fontSize: "18px"
+        fontFamily: "Source Sans Pro"
+    },
+    margin: {
+        marginTop: "0",
+        marginBottom: "10px"
     },
     bold: {
         fontWeight: 600
@@ -17,6 +17,9 @@ const text = {
     },
     small: {
         fontSize: "14px"
+    },
+    medium: {
+        fontSize: "18px"
     },
     large: {
         fontSize: "24px"

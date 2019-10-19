@@ -1,68 +1,175 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Components & Styling
 
-## Available Scripts
+## Base components
 
-In the project directory, you can run:
+Base components are alternatives to HTML elements. It is necessary to use these instead of HTML elements for styling, readability and consistency. _(More to be added in later stages of development)_
 
-### `yarn start`
+* Text
+    - Used for display all types of text. The only base component that will accept a string.
+* View
+    - Used in place of `div`, `section` and all other block-level tags.
+* Button
+    - Used in cases where an `onClick` event needs to be captured.
+* Image
+    - Used in place of the `img` HTML element.
+* Input
+    - Used in place of the `input` HTML element.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Styling Sets
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+JS styling sets are comparable to CSS classes. Example:
 
-### `yarn test`
+```CSS
+.myClass {
+    font-family: Arial;
+    font-size: 16px
+}
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+is equivalent to 
 
-### `yarn build`
+```JS
+const mySets = {
+    myClass: {
+        fontFamily: "Arial",
+        fontSize: "16px"
+    }
+}
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This enables developers to write JSX without using the conventional (and messy) `className` prop. Example:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```JSX
+<BaseComponent className={`${"myClass"} ${"myOtherClass"}`}/>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+becomes
 
-### `yarn eject`
+```JSX
+<BaseComponent myClass myOtherClass/>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Also for inline styles, instead of using the `style` prop, you may use CSS styles directly in the form of dynamic sets. Example:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```JSX
+<BaseComponent style={{color: "blue"}}>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+becomes
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```JSX
+<BaseComponent color="blue">
+```
 
-## Learn More
+### How to - Sets
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+When building custom components, you may want to add this functionality. This is made simple with the Styles object.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```JS
+import Styles from "./Styles";
+```
 
-### Code Splitting
+Let's say you want to build a custom button component with different themes.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+1. Build the shell
 
-### Analyzing the Bundle Size
+```TSX
+interface MyButtonProps {
+    red?: boolean,
+    blue?: boolean
+}
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+const MyButton = ({red, blue}: MyButtonProps) => {
+    return (
+        <Button>
+            <Text>My Button Text</Text>
+        </Button>
+    )
+}
+```
 
-### Making a Progressive Web App
+2. Build the sets
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```TSX
+const MyButtonSets = {
+    red: {
+        backgroundColor: "red",
+        color: "white"
+    },
+    blue: {
+        backgroundColor: "blue",
+        color: "grey"
+    }
+}
 
-### Advanced Configuration
+interface MyButtonProps {
+[...]
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+3. Integrate
 
-### Deployment
+```TSX
+const MyButton = ({red, blue}: MyButtonProps) => {
+    return (
+        <Button style={Styles.submit({red, blue}).to(MyButtonSets)}>
+            <Text>My Button Text</Text>
+        </Button>
+    )
+}
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+4. Use it!
 
-### `yarn build` fails to minify
+```TSX
+<MyButton red/>     // Button with red background and white text
+<MyButton blue/>    // Button with blue background and grey text
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### How to - Dynamic Sets
+
+Let's say you want a component that allows you to render text of any given color.
+
+1. Build the shell
+
+```TSX
+interface MyColoredTextProps {
+    textColor?: string,
+}
+
+const MyColoredText = ({textColor}: MyColoredTextProps) => {
+    return (
+        <Text>My Colored Text</Text>
+    )
+}
+```
+
+2. Build the sets
+
+```TSX
+const MyColoredTextSets = {
+    textColor: (color: string) => {
+        return { color }
+    }
+}
+```
+
+3. Integrate
+
+```TSX
+interface MyColoredTextProps {
+    textColor?: string
+}
+
+const MyColoredText = ({textColor}: MyColoredTextProps) => {
+    return (
+        <Text style={Styles.submit({textColor}).to(MyColoredTextSets)}>My Colored Text</Text>
+    )
+}
+```
+
+4. Use it!
+
+```TSX
+<MyColoredText textColor="#FF0000"/>    // Red text
+<MyColoredText textColor="orange"/>     // Orange text
+```

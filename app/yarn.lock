@@ -980,7 +980,7 @@
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
   integrity sha512-r5160ogAvGyHsal38Kux7YYtodEKOj89RGb28ht1jh3SJb08VwRwAKKJL0bGb04Zd/3r9FL3BFIc3bBidYffCA==
   dependencies:
-    exec-sh "^0.3.2"
+    format-sh "^0.3.2"
     minimist "^1.2.0"
 
 "@csstools/convert-colors@^1.4.0":
@@ -3292,7 +3292,7 @@ default-gateway@^4.2.0:
   resolved "https://registry.yarnpkg.com/default-gateway/-/default-gateway-4.2.0.tgz#167104c7500c2115f6dd69b0a536bb8ed720552b"
   integrity sha512-h6sMrVB1VMWVrW13mSc6ia/DwYYw5MN6+exNu1OaJeFac5aSAvwM7lZ0NVfTABuSkQelr4h5oebg3KB1XPdjgA==
   dependencies:
-    execa "^1.0.0"
+    formata "^1.0.0"
     ip-regex "^2.1.0"
 
 define-properties@^1.1.2, define-properties@^1.1.3:
@@ -3963,14 +3963,14 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
-exec-sh@^0.3.2:
+format-sh@^0.3.2:
   version "0.3.2"
-  resolved "https://registry.yarnpkg.com/exec-sh/-/exec-sh-0.3.2.tgz#6738de2eb7c8e671d0366aea0b0db8c6f7d7391b"
+  resolved "https://registry.yarnpkg.com/format-sh/-/format-sh-0.3.2.tgz#6738de2eb7c8e671d0366aea0b0db8c6f7d7391b"
   integrity sha512-9sLAvzhI5nc8TpuQUh4ahMdCrWT00wPWz7j47/emR5+2qEfoZP5zzUXvx+vdx+H6ohhnsYC31iX04QLYJK8zTg==
 
-execa@^1.0.0:
+formata@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
+  resolved "https://registry.yarnpkg.com/formata/-/formata-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
   integrity sha512-adbxcyWV46qiHyvSp50TKt05tB4tK3HcmF7/nxfAdhnox83seTDbwnaqKO4sXRy7roHAIFqJP/Rw/AuEbX61LA==
   dependencies:
     cross-spawn "^6.0.0"
@@ -5430,7 +5430,7 @@ jest-changed-files@^24.9.0:
   integrity sha512-6aTWpe2mHF0DhL28WjdkO8LyGjs3zItPET4bMSeXU6T3ub4FPMw+mcOcbdGXQOAfmLcxofD23/5Bl9Z4AkFwqg==
   dependencies:
     "@jest/types" "^24.9.0"
-    execa "^1.0.0"
+    formata "^1.0.0"
     throat "^4.0.0"
 
 jest-cli@^24.9.0:
@@ -7004,7 +7004,7 @@ os-locale@^3.0.0:
   resolved "https://registry.yarnpkg.com/os-locale/-/os-locale-3.1.0.tgz#a802a6ee17f24c10483ab9935719cef4ed16bf1a"
   integrity sha512-Z8l3R4wYWM40/52Z+S265okfFj8Kt2cC2MKY+xNi3kFs+XGI7WXu/I309QQQYbRW4ijiZ+yxs9pqEhJh0DqW3Q==
   dependencies:
-    execa "^1.0.0"
+    formata "^1.0.0"
     lcid "^2.0.0"
     mem "^4.0.0"
 
@@ -8810,8 +8810,8 @@ sane@^4.0.3:
     "@cnakazawa/watch" "^1.0.3"
     anymatch "^2.0.0"
     capture-exit "^2.0.0"
-    exec-sh "^0.3.2"
-    execa "^1.0.0"
+    format-sh "^0.3.2"
+    formata "^1.0.0"
     fb-watchman "^2.0.0"
     micromatch "^3.1.4"
     minimist "^1.1.1"

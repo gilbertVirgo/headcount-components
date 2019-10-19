@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import Image from "./Image.d";
-import Text from "./Text.d";
+import View from "./View";
 
 import Calendar from "../assets/calendar.svg";
 import Home from "../assets/home.svg";
@@ -10,11 +9,8 @@ import Settings from "../assets/settings.svg";
 import main from "../styles/main";
 import text from "../styles/text";
 import color from "../styles/color";
-import { createSecureContext } from "tls";
 
-declare module "react";
-
-const inline = {
+const styles = {
     container: {
         ...main.paddingLarge,
         paddingBottom: "0",
@@ -48,14 +44,14 @@ interface PanelProps {
     onClick: any,
     active: boolean,
     icon: any,
-    children: any
+    children: JSX.Element | JSX.Element[] | string
 }
 
 const Panel = ({ onClick, active, icon, children }: PanelProps) => (
-    <div style={inline.panel(active)} onClick={onClick}>
-        <Image style={inline.panelIcon} source={icon} />
-        <Text style={inline.panelLabel}>{children}</Text>
-    </div>
+    <View style={styles.panel(active)} onClick={onClick}>
+        <img style={styles.panelIcon} src={icon} />
+        <p style={styles.panelLabel}>{children}</p>
+    </View>
 );
 
 const Nav = ({ onLoad }: { onLoad: any }) => {
@@ -72,11 +68,11 @@ const Nav = ({ onLoad }: { onLoad: any }) => {
     }, [container]);
 
     return (
-        <div ref={container} style={inline.container}>
+        <View ref={container} style={styles.container}>
             <Panel active={0 === activeIndex} onClick={() => setActiveIndex(0)} icon={Calendar}>My Bookings</Panel>
             <Panel active={1 === activeIndex} onClick={() => setActiveIndex(1)} icon={Home}>Home</Panel>
             <Panel active={2 === activeIndex} onClick={() => setActiveIndex(2)} icon={Settings}>Settings</Panel>
-        </div>
+        </View>
     )
 }
 
