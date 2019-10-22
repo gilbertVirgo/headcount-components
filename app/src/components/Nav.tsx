@@ -1,56 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import View from "./View";
+import View from "../base/View";
+import Text from "../base/Text";
+import Image from "../base/Image";
+import Button from "../base/Button";
 
 import Calendar from "../assets/calendar.svg";
 import Home from "../assets/home.svg";
 import Settings from "../assets/settings.svg";
 
-import main from "../styles/main";
-import text from "../styles/text";
-import color from "../styles/color";
-
-const styles = {
-    container: {
-        ...main.paddingLarge,
-        paddingBottom: "0",
-        position: "fixed" as const,
-        left: "0", bottom: "0",
-        display: "flex",
-        flexDirection: "row" as const,
-        width: "100vw",
-        backgroundColor: color.white
-    },
-    panel: (active: boolean) => ({
-        flex: 1,
-        textAlign: "center" as const,
-        borderBottom: active ? `5px solid ${color.dark}` : "none"
-    }),
-    panelIcon: {
-        display: "block",
-        height: "20px",
-        marginLeft: "auto",
-        marginRight: "auto"
-    },
-    panelLabel: {
-        ...text.default,
-        ...text.small,
-        display: "block",
-        color: color.dark,
-    }
-}
+import Constants from "../Constants";
+import Space from "./Space";
+import Group from "./Group";
 
 interface PanelProps {
     onClick: any,
     active: boolean,
     icon: any,
-    children: JSX.Element | JSX.Element[] | string
+    children: string
 }
 
 const Panel = ({ onClick, active, icon, children }: PanelProps) => (
-    <View style={styles.panel(active)} onClick={onClick}>
-        <img style={styles.panelIcon} src={icon} />
-        <p style={styles.panelLabel}>{children}</p>
+    <View border-bottom={active} flex flex-value={1} flex-column flex-middle flex-center>
+        <Button onClick={onClick}>
+            <Group>
+                <Image margin-auto block height="20px" src={icon} />
+            </Group>
+            <Group>
+                <Text small color={Constants.color.DARK}>{children}</Text>
+            </Group>
+        </Button>
     </View>
 );
 
@@ -68,7 +47,7 @@ const Nav = ({ onLoad }: { onLoad: any }) => {
     }, [container]);
 
     return (
-        <View ref={container} style={styles.container}>
+        <View ref={container} padding fixed left="0" bottom="0" flex flex-row width="100vw" variant="white">
             <Panel active={0 === activeIndex} onClick={() => setActiveIndex(0)} icon={Calendar}>My Bookings</Panel>
             <Panel active={1 === activeIndex} onClick={() => setActiveIndex(1)} icon={Home}>Home</Panel>
             <Panel active={2 === activeIndex} onClick={() => setActiveIndex(2)} icon={Settings}>Settings</Panel>

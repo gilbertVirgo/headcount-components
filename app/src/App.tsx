@@ -1,169 +1,95 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import StatusIcon from "./components/StatusIcon";
-import Container from './components/Container';
+import React, { useState } from "react";
+
+import Text from "./base/Text";
+import View from "./base/View";
+
+import Container from "./components/Container";
+import Alert from "./components/Alert";
+import Combo from "./components/Combo";
+import Grid from "./components/Grid";
+import Header from "./components/Header";
+import Group from "./components/Group";
+import Label from "./components/Label";
+import TextInput from "./components/TextInput";
+import Button from "./base/Button";
 import RoundedRect from "./components/RoundedRect";
-import Label from './components/Label';
-
-import variant from "./styles/variant";
-import color from './styles/color';
-
-import Group from './components/Group';
-import Input from './components/TextInput';
-import Alert from './components/Alert';
-import Modal from './components/Modal';
-import Nav from './components/Nav';
-
-import Danger from "./assets/danger.svg";
-import Grid from './components/Grid';
-import Combo from './components/Combo';
-
-import Text from "./components/Text";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faHome, faPhone, faMapPin } from '@fortawesome/free-solid-svg-icons';
-import View from './components/View';
-
-declare module 'react';
+import Modal from "./components/Modal";
+import Nav from "./components/Nav";
+import Space from "./components/Space";
+import StatusIcon from "./components/StatusIcon";
 
 const App = () => {
-	const [modal, setModal] = useState(true);
-	const [navHeight, setNavHeight] = useState(0);
+    const [modal, setModal] = useState(false);
+    const [navHeight, setNavHeight] = useState("0");
 
-	return (
-		<main>
-			<Header title="Login" />
-			<Container style={{ marginBottom: `${navHeight}px` }}>
-				<Group>
-					<Label>Email</Label>
-					<Input defaultValue="" placeholder="Enter your email" />
-				</Group>
-				<Group>
-					<Label>Password</Label>
-					<Input defaultValue="" placeholder="Enter your password" password />
-				</Group>
-				<Group>
-					<Label>Email (invalid example)</Label>
-					<Input defaultValue="" placeholder="Enter your email" invalid />
-				</Group>
-				<RoundedRect marginBottom>
-					<Text>
-						Login
-					</Text>
-				</RoundedRect>
-				<Text center margin color={color.muted}>Sign up</Text>
-				<Text center margin small color={color.light}>Forgotten your password?</Text>
-				<Group>
-					<Alert variant={variant.danger} dismissible={true}>
-						<Text>Your passwords don't match. Please try again.</Text>
-					</Alert>
-				</Group>
-				<Group>
-					<Alert variant={variant.success} dismissible={false}>
-						<Text>Your sign up was successful</Text>
-					</Alert>
-				</Group>
-				<StatusIcon icon={Danger}>
-					<Text bold large center margin>Oops!</Text>
-					<Text center margin>Looks like you don't have any appointments, yet!</Text>
-				</StatusIcon>
-				<Modal show={modal} variant={variant.white} onClose={() => setModal(false)}>
-					<Group>
-						<Text>
-							You are about to book an appointment
-							for an adult haircut with Jon S. Doe
-							at XYZ Salon on Thu, 8th August at
-							12pm!
-						</Text>
-					</Group>
-					<RoundedRect>
-						<Text>
-							Confirm
-						</Text>
-					</RoundedRect>
-				</Modal>
-				<Combo>
-					<Combo.Header>
-						<Combo.Image src={require("./assets/popart.png")} />
-						<Combo.Info>
-							<Text>Wed, 7th Aug @ 15:30</Text>
-							<Text small color={color.muted}>Child's haircut</Text>
-						</Combo.Info>
-					</Combo.Header>
-					<Combo.Body>
-						<Grid>
-							<Grid.Cell>
-								<View flex={1} alignCenter>
-									<FontAwesomeIcon icon={faUser} />
-								</View>
-								<Text flex={3} noMargin marginLeft textSmall>John S. Doe</Text>
-							</Grid.Cell>
-							<Grid.Cell>
-								<View flex={1} alignCenter>
-									<FontAwesomeIcon icon={faHome} />
-								</View>
-								<Text flex={3} noMargin marginLeft textSmall>Best Barber Shop</Text>
-							</Grid.Cell>
-							<Grid.Cell>
-								<View flex={1} alignCenter>
-									<FontAwesomeIcon icon={faPhone} />
-								</View>
-								<Text flex={3} noMargin marginLeft textSmall>(+44) 1234 567 890</Text>
-							</Grid.Cell>
-							<Grid.Cell>
-								<View flex={1} alignCenter>
-									<FontAwesomeIcon icon={faMapPin} />
-								</View>
-								<Text flex={3} noMargin marginLeft textSmall>17 Barbers Place, E2 2D0</Text>
-							</Grid.Cell>
-						</Grid>
-						<RoundedRect noRadius>
-							<Text>
-								Cancel Booking
-							</Text>
-						</RoundedRect>
-					</Combo.Body>
-				</Combo>
-				<Combo>
-					<Combo.Header>
-						<Combo.Image src={require("./assets/popart.png")} />
-						<Combo.Info>
-							<Group>
-								<FontAwesomeIcon icon={faUser} />
-								<Text marginLeft inline>Mark Maciver</Text>
-							</Group>
-							<Group noMargin>
-								<FontAwesomeIcon icon={faHome} />
-								<Text marginLeft inline>SliderCuts</Text>
-							</Group>
-						</Combo.Info>
-					</Combo.Header>
-					<Combo.Body>
-						<Grid>
-							<Grid.Cell>
-								<View flex={1} alignCenter>
-									<FontAwesomeIcon icon={faPhone} />
-								</View>
-								<Text flex={3} marginLeft textSmall>(+44) 1234 567 890</Text>
-							</Grid.Cell>
-							<Grid.Cell>
-								<View flex={1} alignCenter>
-									<FontAwesomeIcon icon={faMapPin} />
-								</View>
-								<Text flex={3} marginLeft textSmall>Old Street, E1</Text>
-							</Grid.Cell>
-						</Grid>
-						<RoundedRect noRadius>
-							<Text>
-								Cancel Booking
-							</Text>
-						</RoundedRect>
-					</Combo.Body>
-				</Combo>
-			</Container>
-			<Nav onLoad={setNavHeight} />
-		</main >
-	);
+    return (<>
+        <Header title="Home" />
+        <Container>
+            <Alert variant="success">
+                Something went right!
+            </Alert>
+            <Alert variant="danger" dismissible>
+                Something went wrong! But you can dismiss it.
+            </Alert>
+            <Group>
+                <Combo>
+                    <Combo.Header>
+                        <Combo.Image src={require("./assets/popart.png")} />
+                        <Combo.Info>
+                            <Text>
+                                This is an example of a combo component.
+                            </Text>
+                        </Combo.Info>
+                    </Combo.Header>
+                    <Combo.Body>
+                        <Grid>
+                            <View>
+                                <Text>A grid cell.</Text>
+                            </View>
+                            <View>
+                                <Text>Another grid cell.</Text>
+                            </View>
+                        </Grid>
+                        <RoundedRect sharp>
+                            View profile
+                        </RoundedRect>
+                    </Combo.Body>
+                </Combo>
+            </Group>
+            <Group>
+                <Label>Email</Label>
+                <TextInput placeholder="Enter your email" />
+            </Group>
+            <Group>
+                <Label>Password</Label>
+                <TextInput password placeholder="Enter your email" />
+            </Group>
+            <Group>
+                <Label>Email</Label>
+                <TextInput invalid placeholder="Enter your email" />
+            </Group>
+            <Group>
+                <Button onClick={() => setModal(true)}>
+                    <RoundedRect>Open a modal</RoundedRect>
+                </Button>
+            </Group>
+            <Modal show={modal} onClose={() => setModal(false)}>
+                <Group>
+                    <Text>
+                        You are about to book an appointment for an adult
+                        haircut with Jon S. Doe at XYZ Salon on Thu, 8th
+                        August at 12pm!
+                    </Text>
+                </Group>
+                <RoundedRect>
+                    Confirm
+                </RoundedRect>
+            </Modal>
+            <StatusIcon icon={require("./assets/danger.svg")} />
+            <Space height={navHeight} />
+        </Container>
+        <Nav onLoad={setNavHeight} />
+    </>)
 }
 
 export default App;

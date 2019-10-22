@@ -1,31 +1,16 @@
 import React from "react";
-import Group from "./Group";
 
-
-
-import Image from "./Image";
+import View from "../base/View";
+import Image from "../base/Image";
 
 // Add new styling stuff 
 
-const styles = {
-    icon: {
-        marginLeft: "auto",
-        marginRight: "auto",
-        height: "75px",
-        display: "block"
-    }
-}
-
-interface StatusIconProps extends Styles.Options {
-    icon: string | JSX.Element,
-    children: any
+interface StatusIconProps {
+    icon: string
 }
 
 const StatusIcon = (props: StatusIconProps) => (
-    <Group style={Styles.format(props)}>
-        <Image style={styles.icon} src={props.icon} />
-        {props.children}
-    </Group>
+    <Image margin-auto height="75px" block src={props.icon} />
 );
 
 export default StatusIcon;

@@ -1,15 +1,13 @@
 import React from "react";
 
-import View from "./View";
+import View from "../base/View";
 
-import * as Styles from "../styles/styles";
-
-interface GroupProps extends Styles.Options {
-    children: JSX.Element | JSX.Element[] | null | undefined
+interface GroupProps {
+    children: JSX.Element | JSX.Element[]
 }
 
 const Group = (props: GroupProps) => (
-    <View style={Styles.format({ marginBottom: true, ...props })}>{props.children}</View>
+    <View margin-bottom>{props.children}</View>
 )
 
 export default Group;

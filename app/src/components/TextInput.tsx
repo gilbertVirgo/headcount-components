@@ -3,25 +3,12 @@ import React, { useState } from "react";
 import Show from "../assets/show.svg";
 import Hide from "../assets/hide.svg";
 
-import color from "../styles/color";
+import Input from "../base/Input";
+import View from "../base/View";
+import Image from "../base/Image";
+import Button from "../base/Button";
 
-import View from "./View";
-
-import * as Styles from "../styles/styles";
-import Input from "./Input";
-
-const styles = {
-    container: {
-        position: "relative" as const
-    },
-    toggle: {
-        position: "absolute" as const,
-        top: "-25px", right: "0",
-        height: "15px"
-    }
-}
-
-interface TextInputProps extends Styles.Options {
+interface TextInputProps {
     value?: string,
     onChange?: any,
     defaultValue?: string,
@@ -37,17 +24,23 @@ const TextInput = (props: TextInputProps) => {
     if (props.invalid === null) props.invalid = false;
 
     return (
-        <View style={styles.container}>
-            {props.password && <img style={styles.toggle} src={show ? Show : Hide} onClick={() => setShow(!show)} />}
+        <View relative>
+            {props.password && (
+                <Button onClick={() => setShow(!show)}>
+                    <View absolute top="-25px" right="0">
+                        <Image height="15px" src={show ? Show : Hide} />
+                    </View>
+                </Button>
+            )}
             <Input
-                textMedium
+                medium
                 padding
                 border
-                borderColor={props.invalid ? color.danger : color.light}
-                borderRadius
-                fullWidth
-                noOutline
-                sansSerif
+                variant={props.invalid ? "danger-outline" : "white"}
+                border-radius
+                width="100%"
+                no-outline
+                sans-serif
                 type={show ? "text" : "password"}
                 value={props.value}
                 onChange={props.onChange}

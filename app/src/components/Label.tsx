@@ -1,16 +1,16 @@
 import React from "react";
 
-import text from "../styles/text";
-import color from "../styles/color";
+import Constants from "../Constants";
 
-const styles = {
-    ...text.default,
-    color: color.muted,
-    margin: "5px 0"
-}
+import Text from "../base/Text";
+import View from "../base/View";
+import Space from "./Space";
 
-const Label = ({ children }: { children: JSX.Element | JSX.Element[] | string }) => (
-    <p style={styles}>{children}</p>
+const Label = ({ children }: { children: string }) => (
+    <View>
+        <Text color={Constants.color.MUTED}>{children}</Text>
+        <Space height="5px" />
+    </View>
 )
 
 export default Label;

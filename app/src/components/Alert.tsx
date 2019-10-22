@@ -1,52 +1,37 @@
 import React, { useState } from "react";
-import Button from "./Button";
-import View from "./View";
-import Image from "./Image";
 
-import * as Styles from "../styles/styles";
+import View from "../base/View";
+import Button from "../base/Button";
+import Image from "../base/Image";
+import Text from "../base/Text";
 
 import Close from "../assets/close.svg";
+import { useEffect } from "react";
 
-import main from "../styles/main";
-import text from "../styles/text";
-
-const styles = {
-    container: ({ show, backgroundColor }: { show: boolean, backgroundColor: string }) => ({
-        backgroundColor: backgroundColor ? backgroundColor + "40" : "transparent", // alpha approx. 0.5
-        border: `2px solid ${backgroundColor}`,
-        display: show ? "flex" : "none"
-    }),
-    closeContainer: {
-        verticalAlign: "middle" as const,
-        textAlign: "center" as const,
-        flex: 1
-    },
-    textContainer: {
-        verticalAlign: "middle" as const,
-        flex: 9
-    },
-    close: {
-        width: "15px",
-        verticalAlign: "middle" as const
-    },
+interface AlertProps {
+    children: string,
+    variant: string,
+    dismissible?: boolean
 }
 
-const Alert = ({ dismissible, variant: { backgroundColor, color }, children }: { dismissible: boolean, variant: { backgroundColor: string, color: string }, children: JSX.Element | JSX.Element[] | string }) => {
-    const [show, setShow] = useState(true);
+const Alert = (props: AlertProps) => {
+    const [hidden, setHidden] = useState(false);
 
-    return (
-        <View padding style={styles.container({ show, backgroundColor })}>
-            {dismissible && (
-                <Button style={styles.closeContainer} onClick={() => setShow(false)}>
-                    <Image src={Close} style={styles.close} />
-                </Button>
+    return !hidden ? (
+        <View margin-bottom border variant={props.variant} padding flex flex-middle flex-row>
+            {props.dismissible && (
+                <View margin-right>
+                    <Button onClick={() => setHidden(true)}>
+                        <Image src={Close} block width="15px" />
+                    </Button>
+                </View>
             )}
 
-            <View flex={9} style={styles.textContainer}>
-                {children}
+            <View flex-value={1}>
+                <Text no-margin sans-serif>{props.children}</Text>
             </View>
         </View>
-    )
+    ) : null
 }
 
 export default Alert;

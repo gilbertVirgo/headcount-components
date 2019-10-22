@@ -1,20 +1,9 @@
 import React from "react";
 
-import View from "./View";
+import View from "../base/View";
 
-import main from "../styles/main";
-
-const styles = {
-    ...main.paddingLarge,
-    position: "relative" as const,
-    maxWidth: "480px",
-    marginLeft: "auto",
-    marginRight: "auto",
-    boxSizing: "border-box" as const
-}
-
-const Container = ({ style, children }: { style: object, children: object }) => (
-    <View style={{ ...styles, ...style }}>{children}</View>
+const Container = ({ children }: { children: JSX.Element | JSX.Element[] }) => (
+    <View padding relative max-width="480px" margin-auto>{children}</View>
 );
 
 export default Container;

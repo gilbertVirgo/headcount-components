@@ -1,65 +1,36 @@
 import React from "react";
 
-import View from "./View";
+import View from "../base/View";
+import Space from "./Space";
+
+import Button from "../base/Button";
+import Image from "../base/Image";
 
 import Close from "../assets/close.svg";
 
-import main from '../styles/main';
-import color from "../styles/color";
-
-import Button from "./Button";
-import Image from "./Image";
-
-const styles = {
-    overlay: (show: boolean) => ({
-        ...main.paddingLarge,
-        display: show ? "block" : "none",
-        backgroundColor: "#00000040",
-        width: "100vw", height: "100vh",
-        position: "fixed" as const,
-        top: "0", left: "0",
-    }),
-    container: (backgroundColor: string) => ({
-        ...main.paddingLarge,
-        ...main.borderRadius,
-        ...main.shadow,
-        backgroundColor,
-        width: "100%", maxWidth: "500px",
-        position: "relative" as const,
-        left: "50%", top: "50%",
-        transform: "translate(-50%, -50%)",
-    }),
-    closeButton: {
-        overflow: "auto",
-        clear: "both"
-    },
-    close: {
-        width: "15px",
-        float: "right"
-    }
-}
-
 interface ModalProps {
     show: boolean,
-    variant: {
-        backgroundColor: string,
-        color: string
-    },
+    variant?: string,
     onClose: any,
-    children: JSX.Element | JSX.Element[] | string
+    children: JSX.Element | JSX.Element[]
 }
 
-const Modal = ({ show, variant: { backgroundColor, color }, onClose, children }: ModalProps) => {
-    return (
-        <View style={styles.overlay(show)} onClick={onClose}>
-            <View style={styles.container(backgroundColor)}>
-                <Button style={styles.closeButton} onClick={onClose}>
-                    <Image src={Close} style={styles.close} />
-                </Button>
-                {children}
+const Modal = (props: ModalProps) => {
+    return props.show ? (
+        // <Button onClick={props.onClose}>
+        <View padding variant="overlay" width="100vw" height="100vh" fixed top="0" left="0">
+            <View variant={props.variant || "white"} padding border-radius width="90%" max-width="500px" fixed-center>
+                <Space height="30px" />
+                <View absolute top="15px" right="15px">
+                    <Button onClick={props.onClose}>
+                        <Image src={Close} width="15px" />
+                    </Button>
+                </View>
+                {props.children}
             </View>
         </View>
-    )
+        // </Button>
+    ) : null
 }
 
 export default Modal;

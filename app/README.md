@@ -4,16 +4,19 @@
 
 Base components are alternatives to HTML elements. It is necessary to use these instead of HTML elements for styling, readability and consistency. _(More to be added in later stages of development)_
 
-* Text
+* `Text`
     - Used for display all types of text. The only base component that will accept a string.
-* View
+* `View`
     - Used in place of `div`, `section` and all other block-level tags.
-* Button
+* `Button`
     - Used when a `click` event needs to be captured.
-* Image
+* `Image`
     - Used in place of the `img` HTML element.
-* Input
+* `Input`
     - Used in place of the `input` HTML element.
+* `Table`
+    - Used (loosely) in place of the `table` HTML element.
+    - `Grid` is built on top of `Table`. Use `Grid` instead.
 
 ## Styling Sets
 
@@ -40,16 +43,16 @@ const mySets = {
 This enables developers to write JSX without using the conventional (and messy) `className` prop. Example:
 
 ```JSX
-<BaseComponent className={`${"myClass"} ${"myOtherClass"}`}/>
+<BaseComponent className={`${"myClass"}`}/>
 ```
 
 becomes
 
 ```JSX
-<BaseComponent myClass myOtherClass/>
+<BaseComponent myClass/>
 ```
 
-Also for inline styles, instead of using the `style` prop, you may use CSS styles directly in the form of dynamic sets. Example:
+Also for inline styles, instead of using the `style` prop, you may use CSS styles directly in the form of _dynamic_ sets. Example:
 
 ```JSX
 <BaseComponent style={{color: "blue"}}>
@@ -60,6 +63,10 @@ becomes
 ```JSX
 <BaseComponent color="blue">
 ```
+
+***
+
+# Custom base components. Not for everyday use.
 
 ### How to - Sets
 
